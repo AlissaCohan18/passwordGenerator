@@ -14,3 +14,14 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
+// prompt for password criteria when button is clicked
+
+// booleon for: lwr/upr case, numeric, and special char 
+
+// #char from 8-128
+
+// validation??? Then my input should be v and at least 1 char type should be selected"
+
+// generate password based on criteria
+
+//display on screen (or alert)
