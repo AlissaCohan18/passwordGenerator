@@ -13,12 +13,13 @@ function generatePassword(){
   var uCase = window.confirm ("If a uppercase letter is needed, Click OK to apply and continue, or Cancel to move on")
   var num = window.confirm ("If a number is needed, click OK to apply and continue, or Cancel to move on")
   var sChar = window.confirm ("If a special character is needed, click OK to apply and continue, or Cancel to move on")
-   var pLength = prompt("Choose password length (between 8-128 characters)")
-   if (pLength > 7 && pLength < 129) {
-    console.log("validated")
-   }
-   else {pLength = prompt("Choose password length (type a number between 8-128 characters)")}
-  
+  var ver = "not yet ;)"  
+  while (ver != "validated") {
+    var pLength = prompt("Choose password length (between 8-128 characters)")
+      if (pLength > 7 && pLength < 129) {
+       ver="validated"
+      }
+    }
 }
 
 // Add event listener to generate button
