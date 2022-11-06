@@ -9,56 +9,70 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// function arrayLowToHight(low,high) {
-//   for (let i=low; i<=high; i++) {
-//   }
-// }
-
-// const NUM_CHAR = arrayLowToHight(48,57)
-// const UPPER_CHAR = arrayLowToHight(65,90)
-// const LOWER_CHAR = arrayLowToHight(97,122)
-// const SYMBOL_CHAR = arrayLowToHight(33,47).concat(
-//   arrayLowToHight(58,64)).concat(
-//   arrayLowToHight(91,96)).concat(
-//   arrayLowToHight(123,126))
-
-
-// var lchar = document.querySelector('lchar')
-
 var secure1 = false
 var secure2 = false
+var passwordChars = []
 
+function arrayLowToHigh(low,high) {
+  var array = []
+  for (let i = low; i <= high; i++) {
+    array.push(i)
+  }
+}
 
 function generatePassword(){
- 
-    console.log(lChar.checked, uChar.checked, numChar.checked, sChar.checked, pLength.value)
-    if (lChar.checked === false && uChar.checked === false && numChar.checked === false && sChar.checked === false) { 
-       secure1 = false
-       } else {
-         secure1 = true
-       }
-    if (pLength.value >= 8 && pLength.value <= 128) {
-        secure2 = true
-       } else {
-        secure2 = false
-       }
-    if (secure1 == false || secure2 == false) {
+  if (lChar.checked === false && uChar.checked === false && numChar.checked === false && sChar.checked === false) { 
+    secure1 = false
+  } else {
+    secure1 = true
+  }
+  if (pLength.value >= 8 && pLength.value <= 128) {
+    secure2 = true
+  } else {
+    secure2 = false
+  }
+  if (secure1 == false || secure2 == false) {
     window.alert("Password must contain at least one special character and length of 8-128 to be secure")
+  }
+  else 
+  
+  var LOWER_CHAR = []
+  var UPPER_CHAR = []
+  var NUM_CHAR = []
+  var SYMBOL_CHAR = []
+
+
+//  used selected criteria
+  
+      if (lChar.checked === true) {
+        LOWER_CHAR = arrayLowToHigh(97,122)
+      
+      }
+      if (uChar.checked === true) {
+        UPPER_CHAR = arrayLowToHigh(65,90)
+
+      }
+      if (numChar.checked === true){
+        NUM_CHAR = arrayLowToHigh(48,57)
+
+      }
+      if (sChar.checked === true) {
+        SYMBOL_CHAR = arrayLowToHigh(33,47)
+            // .concat(
+            // arrayLowToHigh(58,64)).concat(
+            // arrayLowToHigh(91,96)).concat(
+            // arrayLowToHigh(123,126))
+       
+      }
+   
+   
+      for (i = 0; i<pLength.value ; i++) {
+        var newChar = Math.floor(Math.random()*127)
+        passwordChars.push(String.fromCharCode(newChar))
+        }
+    // returns password array without comma's
+      return(passwordChars.join(''))     
     }
-    else 
-    console.log("ALL GOOD, SECURE")
-}
- //need to pass vars (or constants through function) and then link to ascii
-    // String.fromCharCode()
-// }
 
-  // var passwordChars = []
-  // for (i = 0; i <= pLength ; i++) {
-  //   const character = charCodes[Math.floor(Math.random()*pLength.length)]
-  //   passwordChars.push(String.fromCharCode(charCodes))
-  // }
-  //   return passwordChars.join('')
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
+      // Add event listener to generate button
+      generateBtn.addEventListener("click", writePassword);
