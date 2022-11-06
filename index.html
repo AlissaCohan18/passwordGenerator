@@ -16,6 +16,20 @@
         <div class="card-header">
           <h2>Generate a Password</h2>
         </div>
+        <div class="card-form" id="hiddenform">
+            <form>
+              <label for=lChar>Include Lower Case</label>
+              <input type="checkbox" id="lChar">
+              <label for=uChar>Include Upper Case</label>
+              <input type="checkbox" id="uChar">
+              <label for=numChar>Include Numbers</label>
+              <input type="checkbox" id="numChar">
+              <label for=sChar>Include Symbols </label>
+              <input type="checkbox" id="sChar">
+              <label for="pLength">Select Length: 8-128</label>
+              <input type="number" id="pLength">
+            </form>
+        </div>
         <div class="card-body">
           <textarea
             readonly

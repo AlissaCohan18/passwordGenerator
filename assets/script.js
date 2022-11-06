@@ -1,59 +1,83 @@
+// hide password character selection until user clicks button
+const hide = document.getElementById("hiddenform")
+hide.style.visibility = "hidden";
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// Write password
 function writePassword() {
+  if (hide.style.visibility === "hidden") {
+    hide.style.visibility = "visible"
+  } else { 
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
+  }
 }
 
-// function arrayLowToHight(low,high) {
-//   for (let i=low; i<=high; i++) {
-//   }
-// }
+// creates arrays for each ASCII group
+function generateRandomInteger(min, max) {
+   return Math.floor(min + Math.random()*(max - min + 1))
+   }
 
-// const NUM_CHAR = arrayLowToHight(48,57)
-// const UPPER_CHAR = arrayLowToHight(65,90)
-// const LOWER_CHAR = arrayLowToHight(97,122)
-// const SYMBOL_CHAR = arrayLowToHight(33,47).concat(
-//   arrayLowToHight(58,64)).concat(
-//   arrayLowToHight(91,96)).concat(
-//   arrayLowToHight(123,126))
-
-
-
+// Password generator based on user selections
 function generatePassword(){
-    var secure = false
-    while (secure === false) {
-      var lCase = window.confirm ("If a lowercase letter is needed, click OK to apply and continue, or Cancel to move on")
-      var uCase = window.confirm ("If a uppercase letter is needed, Click OK to apply and continue, or Cancel to move on")
-      var num = window.confirm ("If a number is needed, click OK to apply and continue, or Cancel to move on")
-      var sChar = window.confirm ("If a special character is needed, click OK to apply and continue, or Cancel to move on")
-      if (lCase === false && uCase === false && num === false && sChar === false){ 
-        window.alert("***!At least One Character Type must be selected for a more secure password!***")
-      } else {
-        secure = true
+   var passwordChars = []     
+   var secure1 = false
+   var secure2 = false
+    //criteria validation
+  if (lChar.checked === false && uChar.checked === false && numChar.checked === false && sChar.checked === false) { 
+    secure1 = false
+  } else {
+    secure1 = true
+  }
+  if (pLength.value >= 8 && pLength.value <= 128) {
+    secure2 = true
+  } else {
+    secure2 = false
+  }
+  if (secure1 == false || secure2 == false) {
+    window.alert("Password must contain at least one character type, with length of 8-128 characters")
+  }
+  else {
+    //  used selected criteria
+    var LOWER_CHAR = []
+    var UPPER_CHAR = []
+    var NUM_CHAR = []
+    var SYMBOL_CHAR = []
+    var count = 0
+
+    while (count < pLength.value){
+        if (lChar.checked === true) {
+          LOWER_CHAR = generateRandomInteger(97,122)
+          passwordChars.push(String.fromCharCode(LOWER_CHAR))
+          count++
         }
-      }
-    var ver = "not yet ;)"  
-    while (ver != "validated") {
-      var pLength = prompt("Choose password length (between 8-128 characters)")
-        if (pLength > 7 && pLength < 129) {
-        ver="validated"
+        if (uChar.checked === true) {
+          UPPER_CHAR = generateRandomInteger(65,90)
+          passwordChars.push(String.fromCharCode(UPPER_CHAR))
+          count++
+        }
+        if (numChar.checked === true){
+          NUM_CHAR = generateRandomInteger(48,57)
+          passwordChars.push(String.fromCharCode(NUM_CHAR))
+          count++
+        }
+        if (sChar.checked === true) {
+          SYMBOL_CHAR = generateRandomInteger(33,47)
+              // .concat(
+              // generateRandomInteger(58,64)).concat(
+              // generateRandomInteger(91,96)).concat(
+              // generateRandomInteger(123,126))
+          passwordChars.push(String.fromCharCode(SYMBOL_CHAR))
+          count++
         }
     }
- //need to pass vars (or constants through function) and then link to ascii
-    // String.fromCharCode()
+  }
+  // returns password array without commas
+  return(passwordChars.join(''))     
 }
-
-  // var passwordChars = []
-  // for (i = 0; i <= pLength ; i++) {
-  //   const character = charCodes[Math.floor(Math.random()*pLength.length)]
-  //   passwordChars.push(String.fromCharCode(charCodes))
-  // }
-  //   return passwordChars.join('')
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
