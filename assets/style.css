@@ -50,6 +50,11 @@ header {
   height: 2px;
 }
 
+.card-form {
+  padding: 15px;
+  text-align: center;
+}
+
 .card-body {
   min-height: 100px;
 }

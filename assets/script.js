@@ -26,11 +26,11 @@ function writePassword() {
 function generatePassword(){
     var secure = false
     while (secure === false) {
-      var lCase = window.confirm ("If a lowercase letter is needed, click OK to apply and continue, or Cancel to move on")
-      var uCase = window.confirm ("If a uppercase letter is needed, Click OK to apply and continue, or Cancel to move on")
-      var num = window.confirm ("If a number is needed, click OK to apply and continue, or Cancel to move on")
-      var sChar = window.confirm ("If a special character is needed, click OK to apply and continue, or Cancel to move on")
-      if (lCase === false && uCase === false && num === false && sChar === false){ 
+      // var lCase = window.confirm ("If a lowercase letter is needed, click OK to apply and continue, or Cancel to move on")
+      // var uCase = window.confirm ("If a uppercase letter is needed, Click OK to apply and continue, or Cancel to move on")
+      // var num = window.confirm ("If a number is needed, click OK to apply and continue, or Cancel to move on")
+      // var sChar = window.confirm ("If a special character is needed, click OK to apply and continue, or Cancel to move on")
+      if (lChar === false && uChar === false && numChar === false && sChar === false){ 
         window.alert("***!At least One Character Type must be selected for a more secure password!***")
       } else {
         secure = true
