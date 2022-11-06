@@ -1,3 +1,4 @@
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -22,26 +23,34 @@ function writePassword() {
 //   arrayLowToHight(123,126))
 
 
+// var lchar = document.querySelector('lchar')
+
+var secure1 = false
+var secure2 = false
+
 
 function generatePassword(){
-  var secure = false
-  while (secure === false) {
-       if (lChar === false && uChar === false && numChar === false && sChar === false){ 
-          window.alert("***!At least One Character Type must be selected for a more secure password!***")
+ 
+    console.log(lChar.checked, uChar.checked, numChar.checked, sChar.checked, pLength.value)
+    if (lChar.checked === false && uChar.checked === false && numChar.checked === false && sChar.checked === false) { 
+       secure1 = false
        } else {
-          secure = true
-         }
+         secure1 = true
+       }
+    if (pLength.value >= 8 && pLength.value <= 128) {
+        secure2 = true
+       } else {
+        secure2 = false
+       }
+    if (secure1 == false || secure2 == false) {
+    window.alert("Password must contain at least one special character and length of 8-128 to be secure")
     }
-  var ver = "not yet ;)"  
-  while (ver != "validated") {
-    var pLength = prompt("Choose password length (between 8-128 characters)")
-      if (pLength > 7 && pLength < 129) {
-      ver="validated"
-      }
-  }
+    else 
+    console.log("ALL GOOD, SECURE")
+}
  //need to pass vars (or constants through function) and then link to ascii
     // String.fromCharCode()
-}
+// }
 
   // var passwordChars = []
   // for (i = 0; i <= pLength ; i++) {
