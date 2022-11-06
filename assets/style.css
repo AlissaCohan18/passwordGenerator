@@ -52,7 +52,18 @@ header {
 
 .card-form {
   padding: 15px;
-  text-align: center;
+  display: flex;
+  }
+
+form {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: auto;
+}
+
+input {
+  margin-left: 15px;
+  
 }
 
 .card-body {

@@ -24,25 +24,21 @@ function writePassword() {
 
 
 function generatePassword(){
-    var secure = false
-    while (secure === false) {
-      // var lCase = window.confirm ("If a lowercase letter is needed, click OK to apply and continue, or Cancel to move on")
-      // var uCase = window.confirm ("If a uppercase letter is needed, Click OK to apply and continue, or Cancel to move on")
-      // var num = window.confirm ("If a number is needed, click OK to apply and continue, or Cancel to move on")
-      // var sChar = window.confirm ("If a special character is needed, click OK to apply and continue, or Cancel to move on")
-      if (lChar === false && uChar === false && numChar === false && sChar === false){ 
-        window.alert("***!At least One Character Type must be selected for a more secure password!***")
-      } else {
-        secure = true
-        }
-      }
-    var ver = "not yet ;)"  
-    while (ver != "validated") {
-      var pLength = prompt("Choose password length (between 8-128 characters)")
-        if (pLength > 7 && pLength < 129) {
-        ver="validated"
-        }
+  var secure = false
+  while (secure === false) {
+       if (lChar === false && uChar === false && numChar === false && sChar === false){ 
+          window.alert("***!At least One Character Type must be selected for a more secure password!***")
+       } else {
+          secure = true
+         }
     }
+  var ver = "not yet ;)"  
+  while (ver != "validated") {
+    var pLength = prompt("Choose password length (between 8-128 characters)")
+      if (pLength > 7 && pLength < 129) {
+      ver="validated"
+      }
+  }
  //need to pass vars (or constants through function) and then link to ascii
     // String.fromCharCode()
 }
