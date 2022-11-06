@@ -1,26 +1,32 @@
+// hide password character selection until user clicks button
+const hide = document.getElementById("hiddenform")
+hide.style.visibility = "hidden";
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// Write password
 function writePassword() {
+  if (hide.style.visibility === "hidden") {
+    hide.style.visibility = "visible"
+  } else { 
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
-}
-
-var secure1 = false
-var secure2 = false
-var passwordChars = []
-
-function arrayLowToHigh(low,high) {
-  var array = []
-  for (let i = low; i <= high; i++) {
-    array.push(i)
   }
 }
 
+// creates arrays for each ASCII group
+function generateRandomInteger(min, max) {
+   return Math.floor(min + Math.random()*(max - min + 1))
+   }
+
+// Password generator based on user selections
 function generatePassword(){
+   var passwordChars = []     
+   var secure1 = false
+   var secure2 = false
+    //criteria validation
   if (lChar.checked === false && uChar.checked === false && numChar.checked === false && sChar.checked === false) { 
     secure1 = false
   } else {
@@ -32,47 +38,46 @@ function generatePassword(){
     secure2 = false
   }
   if (secure1 == false || secure2 == false) {
-    window.alert("Password must contain at least one special character and length of 8-128 to be secure")
+    window.alert("Password must contain at least one character type, with length of 8-128 characters")
   }
-  else 
-  
-  var LOWER_CHAR = []
-  var UPPER_CHAR = []
-  var NUM_CHAR = []
-  var SYMBOL_CHAR = []
+  else {
+    //  used selected criteria
+    var LOWER_CHAR = []
+    var UPPER_CHAR = []
+    var NUM_CHAR = []
+    var SYMBOL_CHAR = []
+    var count = 0
 
-
-//  used selected criteria
-  
-      if (lChar.checked === true) {
-        LOWER_CHAR = arrayLowToHigh(97,122)
-      
-      }
-      if (uChar.checked === true) {
-        UPPER_CHAR = arrayLowToHigh(65,90)
-
-      }
-      if (numChar.checked === true){
-        NUM_CHAR = arrayLowToHigh(48,57)
-
-      }
-      if (sChar.checked === true) {
-        SYMBOL_CHAR = arrayLowToHigh(33,47)
-            // .concat(
-            // arrayLowToHigh(58,64)).concat(
-            // arrayLowToHigh(91,96)).concat(
-            // arrayLowToHigh(123,126))
-       
-      }
-   
-   
-      for (i = 0; i<pLength.value ; i++) {
-        var newChar = Math.floor(Math.random()*127)
-        passwordChars.push(String.fromCharCode(newChar))
+    while (count < pLength.value){
+        if (lChar.checked === true) {
+          LOWER_CHAR = generateRandomInteger(97,122)
+          passwordChars.push(String.fromCharCode(LOWER_CHAR))
+          count++
         }
-    // returns password array without comma's
-      return(passwordChars.join(''))     
+        if (uChar.checked === true) {
+          UPPER_CHAR = generateRandomInteger(65,90)
+          passwordChars.push(String.fromCharCode(UPPER_CHAR))
+          count++
+        }
+        if (numChar.checked === true){
+          NUM_CHAR = generateRandomInteger(48,57)
+          passwordChars.push(String.fromCharCode(NUM_CHAR))
+          count++
+        }
+        if (sChar.checked === true) {
+          SYMBOL_CHAR = generateRandomInteger(33,47)
+              // .concat(
+              // generateRandomInteger(58,64)).concat(
+              // generateRandomInteger(91,96)).concat(
+              // generateRandomInteger(123,126))
+          passwordChars.push(String.fromCharCode(SYMBOL_CHAR))
+          count++
+        }
     }
+  }
+  // returns password array without commas
+  return(passwordChars.join(''))     
+}
 
-      // Add event listener to generate button
-      generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
