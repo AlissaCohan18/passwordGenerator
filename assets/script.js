@@ -41,7 +41,7 @@ function generatePassword(){
     window.alert("Password must contain at least one character type, with length of 8-128 characters")
   }
   else {
-    //  used selected criteria
+    //declare needed var's outside of "if" statements
     var LOWER_CHAR = []
     var UPPER_CHAR = []
     var NUM_CHAR = []
@@ -53,7 +53,7 @@ function generatePassword(){
     var SYMBOL_CHARsingle
     var randomChar
     var count = 0
-
+    // used selected criteria for password
     while (count < pLength.value){
         if (lChar.checked === true) {
           LOWER_CHAR = generateRandomInteger(97,122)
@@ -83,7 +83,6 @@ function generatePassword(){
           SYMBOL_CHARsingle = (randomChar, SYMBOL_CHAR[randomChar])
           passwordChars.push(String.fromCharCode(SYMBOL_CHARsingle))
           count++
-          console.log(SYMBOL_CHAR)
         }
     }
   }
