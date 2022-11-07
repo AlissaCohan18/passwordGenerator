@@ -46,6 +46,12 @@ function generatePassword(){
     var UPPER_CHAR = []
     var NUM_CHAR = []
     var SYMBOL_CHAR = []
+    var SYMBOL_CHAR1
+    var SYMBOL_CHAR2
+    var SYMBOL_CHAR3
+    var SYMBOL_CHAR4
+    var SYMBOL_CHARsingle
+    var randomChar
     var count = 0
 
     while (count < pLength.value){
@@ -65,13 +71,19 @@ function generatePassword(){
           count++
         }
         if (sChar.checked === true) {
-          SYMBOL_CHAR = generateRandomInteger(33,47)
-              // .concat(
-              // generateRandomInteger(58,64)).concat(
-              // generateRandomInteger(91,96)).concat(
-              // generateRandomInteger(123,126))
-          passwordChars.push(String.fromCharCode(SYMBOL_CHAR))
+          SYMBOL_CHAR1 = generateRandomInteger(33,47)
+          SYMBOL_CHAR.push(SYMBOL_CHAR1)
+          SYMBOL_CHAR2 = generateRandomInteger(58,64)
+          SYMBOL_CHAR.push(SYMBOL_CHAR2)
+          SYMBOL_CHAR3 = generateRandomInteger(91,96)
+          SYMBOL_CHAR.push(SYMBOL_CHAR3)
+          SYMBOL_CHAR4 = generateRandomInteger(123,126)
+          SYMBOL_CHAR.push(SYMBOL_CHAR4)
+          randomChar = Math.floor(Math.random()*SYMBOL_CHAR.length)
+          SYMBOL_CHARsingle = (randomChar, SYMBOL_CHAR[randomChar])
+          passwordChars.push(String.fromCharCode(SYMBOL_CHARsingle))
           count++
+          console.log(SYMBOL_CHAR)
         }
     }
   }
